@@ -31,10 +31,7 @@ public class Sala {
         return asiento;
     }
 
-    /**
-     * Atajo para crear una cuadrícula de asientos (A1..). Las "filasAccesibles" primeras filas
-     * quedan marcadas como accesibles.
-     */
+
     public void crearAsientos(int filas, int columnas, int filasAccesibles) throws DatosInvalidosException {
         if (filas < 1 || filas > 26 || columnas < 1) {
             throw new DatosInvalidosException("La sala debe tener entre 1 y 26 filas y al menos 1 columna.");
@@ -52,7 +49,7 @@ public class Sala {
 
     public int obtenerCapacidad() { return listaAsientos.size(); }
 
-    /** Lo llama Cine.programarFuncion para mantener la relación Sala 1 — 0..* Funcion. */
+
     void agregarFuncion(Funcion funcion) { listaFunciones.add(funcion); }
 
     public List<Funcion> getListaFunciones() { return Collections.unmodifiableList(listaFunciones); }

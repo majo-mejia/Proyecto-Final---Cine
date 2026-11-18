@@ -12,9 +12,6 @@ import java.util.*;
 /**
  * Calcula los 7 reportes a partir de las listas del Cine. Está separado de
  * ServicioAdministracionReal para que ese servicio no crezca con la lógica de cada reporte (SRP).
- *
- * Periodo: [desde 00:00, hasta 23:59:59]. Cada reporte filtra por la fecha que le corresponde:
- * la de la compra, la de la función, la del movimiento, la del reembolso o la del lote de puntos.
  */
 public class GeneradorReportes {
 

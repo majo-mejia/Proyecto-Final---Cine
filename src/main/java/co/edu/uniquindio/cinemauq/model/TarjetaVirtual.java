@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-/** Toda operación que cambia el saldo registra su MovimientoTarjeta (reglas 2 y 3). */
+
 public class TarjetaVirtual {
 
     private final String numero;

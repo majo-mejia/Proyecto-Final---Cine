@@ -11,9 +11,8 @@ import java.time.format.DateTimeFormatter;
 import java.util.*;
 
 /**
- * Resultado de un reporte: título, fecha de generación, periodo, registros (filas de una tabla)
- * y totales. Además guarda los datos que se dibujan en el gráfico JavaFX.
- * No sabe en qué formato se exporta: lo convierte en líneas de texto y se las entrega a
+ * Resultado de un reporte:
+ *  entrega a
  * cualquier Exportador (TXT o PDF).
  */
 public class Reporte {
@@ -41,7 +40,7 @@ public class Reporte {
         this.columnas = List.copyOf(columnas);
     }
 
-    // ---------------- Construcción (la usa GeneradorReportes) ----------------
+
 
     /** Agrega una fila; debe tener un valor por columna. */
     public void agregarRegistro(String... valores) {
@@ -59,12 +58,8 @@ public class Reporte {
     /** Suma el valor a la etiqueta (si la etiqueta se repite, se acumula). */
     public void agregarDatoGrafico(String etiqueta, double valor) { datosGrafico.merge(etiqueta, valor, Double::sum); }
 
-    // ---------------- Salida ----------------
 
-    /**
-     * El reporte como líneas de texto: encabezado (fecha de generación y periodo), tabla de
-     * registros con columnas alineadas y la sección de totales.
-     */
+
     public List<String> obtenerLineas() {
         List<String> lineas = new ArrayList<>();
         lineas.add("Fecha de generación: " + fechaGeneracion.format(FORMATO_FECHA_HORA));
@@ -94,7 +89,7 @@ public class Reporte {
         return lineas;
     }
 
-    /** Exporta con el exportador recibido; el reporte no depende de si es TXT o PDF (DIP). */
+
     public Path exportar(Exportador exportador, Path destino) throws IOException {
         return exportador.exportar(getTitulo(), obtenerLineas(), destino);
     }
@@ -110,7 +105,7 @@ public class Reporte {
         return anchos;
     }
 
-    /** Una columna se alinea a la derecha si todos sus valores son números o dinero. */
+
     private boolean[] columnasNumericas() {
         boolean[] derecha = new boolean[columnas.size()];
         for (int i = 0; i < derecha.length; i++) {
@@ -134,13 +129,13 @@ public class Reporte {
         return derecha ? espacios + texto : texto + espacios;
     }
 
-    // ---------------- Formatos comunes ----------------
+
 
     public static String dinero(double valor) { return String.format(COLOMBIA, "$%,.0f", valor); }
 
     public static String porcentaje(double valor) { return String.format(COLOMBIA, "%.1f %%", valor); }
 
-    // ---------------- Getters ----------------
+
 
     public TipoReporte getTipo() { return tipo; }
     public String getTitulo() { return tipo.getTitulo(); }
