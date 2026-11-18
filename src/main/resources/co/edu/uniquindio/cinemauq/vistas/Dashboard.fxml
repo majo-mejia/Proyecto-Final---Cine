@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.chart.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="co.edu.uniquindio.cinemauq.controllers.DashboardController"
+            styleClass="root-pane"
+            stylesheets="@../styles/DarkTema.css">
+
+    <!-- MENÚ LATERAL IZQUIERDO -->
+    <left>
+        <VBox prefWidth="210" spacing="12" styleClass="sidebar">
+            <Label text="CinemaUQ" styleClass="brand-title" style="-fx-padding: 0 0 15 10;"/>
+
+            <Button text="📊  Overview" maxWidth="Infinity" styleClass="nav-btn, nav-btn-active"/>
+            <Button text="🎬  Screenings" maxWidth="Infinity" styleClass="nav-btn"/>
+            <Button text="🎟️  Tickets" maxWidth="Infinity" styleClass="nav-btn"/>
+            <Button text="📑  Reports" onAction="#exportarReporteTxt" maxWidth="Infinity" styleClass="nav-btn"/>
+            <Button text="👥  Customers" maxWidth="Infinity" styleClass="nav-btn"/>
+            <Button text="⚙️  Settings" maxWidth="Infinity" styleClass="nav-btn"/>
+
+            <Region VBox.vgrow="ALWAYS"/>
+
+            <Button text="🚪  Cerrar Sesión" onAction="#cerrarSesion" maxWidth="Infinity" styleClass="btn-dark-outline"/>
+        </VBox>
+    </left>
+
+    <!-- CONTENIDO PRINCIPAL -->
+    <center>
+        <ScrollPane fitToWidth="true" styleClass="dark-scroll">
+            <VBox spacing="18" style="-fx-padding: 20;">
+
+                <!-- BARRA SUPERIOR -->
+                <HBox alignment="CENTER_LEFT" spacing="15">
+                    <Label text="Dashboard Overview" styleClass="dashboard-title"/>
+                    <Region HBox.hgrow="ALWAYS"/>
+                    <ComboBox fx:id="cmbTipoReporte" promptText="Tipo de Reporte" styleClass="dark-combo"/>
+                    <Button text="📥 Exportar .TXT" onAction="#exportarReporteTxt" styleClass="btn-gold-small"/>
+                    <Label text="📅 This Week" styleClass="meta-badge"/>
+                    <Label text="👤 Admin" styleClass="meta-badge"/>
+                </HBox>
+
+                <!-- FILA 1: 4 TARJETAS DE KPI -->
+                <HBox spacing="15">
+                    <VBox HBox.hgrow="ALWAYS" spacing="6" styleClass="kpi-card">
+                        <HBox alignment="CENTER_LEFT">
+                            <Label text="Ticket Sales" styleClass="kpi-title"/>
+                            <Region HBox.hgrow="ALWAYS"/>
+                            <Label text="🎟️" style="-fx-text-fill: #FBBF24;"/>
+                        </HBox>
+                        <Label text="8,742" styleClass="kpi-value"/>
+                        <Label text="▲ +12.4% vs last week" styleClass="kpi-trend-up"/>
+                    </VBox>
+
+                    <VBox HBox.hgrow="ALWAYS" spacing="6" styleClass="kpi-card">
+                        <HBox alignment="CENTER_LEFT">
+                            <Label text="Total Revenue" styleClass="kpi-title"/>
+                            <Region HBox.hgrow="ALWAYS"/>
+                            <Label text="💰" style="-fx-text-fill: #FBBF24;"/>
+                        </HBox>
+                        <Label text="\$98,520" styleClass="kpi-value"/>
+                        <Label text="▲ +18.7% vs last week" styleClass="kpi-trend-up"/>
+                    </VBox>
+
+                    <VBox HBox.hgrow="ALWAYS" spacing="6" styleClass="kpi-card">
+                        <HBox alignment="CENTER_LEFT">
+                            <Label text="Occupancy Rate" styleClass="kpi-title"/>
+                            <Region HBox.hgrow="ALWAYS"/>
+                            <Label text="🪑" style="-fx-text-fill: #A78BFA;"/>
+                        </HBox>
+                        <Label text="72%" styleClass="kpi-value"/>
+                        <Label text="▲ +4.1% vs last week" styleClass="kpi-trend-up"/>
+                    </VBox>
+
+                    <VBox HBox.hgrow="ALWAYS" spacing="6" styleClass="kpi-card">
+                        <HBox alignment="CENTER_LEFT">
+                            <Label text="Active Movies" styleClass="kpi-title"/>
+                            <Region HBox.hgrow="ALWAYS"/>
+                            <Label text="🎬" style="-fx-text-fill: #34D399;"/>
+                        </HBox>
+                        <Label text="128" styleClass="kpi-value"/>
+                        <Label text="-2 from last week" styleClass="kpi-trend-neutral"/>
+                    </VBox>
+                </HBox>
+
+                <!-- FILA 2: GRÁFICA DE BARRAS Y GRÁFICA DE ÁREA -->
+                <HBox spacing="15" prefHeight="250">
+                    <VBox HBox.hgrow="ALWAYS" styleClass="chart-card">
+                        <Label text="Ticket Sales Over Time" styleClass="chart-title"/>
+                        <BarChart fx:id="barChartVentas" legendVisible="false" VBox.vgrow="ALWAYS">
+                            <xAxis><CategoryAxis side="BOTTOM"/></xAxis>
+                            <yAxis><NumberAxis side="LEFT"/></yAxis>
+                        </BarChart>
+                    </VBox>
+
+                    <VBox HBox.hgrow="ALWAYS" styleClass="chart-card">
+                        <Label text="Occupancy Rate" styleClass="chart-title"/>
+                        <AreaChart fx:id="areaChartOcupacion" legendVisible="false" VBox.vgrow="ALWAYS">
+                            <xAxis><CategoryAxis side="BOTTOM"/></xAxis>
+                            <yAxis><NumberAxis side="LEFT"/></yAxis>
+                        </AreaChart>
+                    </VBox>
+                </HBox>
+
+                <!-- FILA 3: 2 DIAGRAMAS DE PASTEL Y BARRAS HORIZONTALES/SECUNDARIAS -->
+                <HBox spacing="15" prefHeight="230">
+                    <VBox HBox.hgrow="ALWAYS" styleClass="chart-card">
+                        <Label text="Genre Mix" styleClass="chart-title"/>
+                        <PieChart fx:id="pieChartGeneros" labelsVisible="false" VBox.vgrow="ALWAYS"/>
+                    </VBox>
+
+                    <VBox HBox.hgrow="ALWAYS" styleClass="chart-card">
+                        <Label text="Revenue by Daypart" styleClass="chart-title"/>
+                        <PieChart fx:id="pieChartHorarios" labelsVisible="false" VBox.vgrow="ALWAYS"/>
+                    </VBox>
+
+                    <VBox HBox.hgrow="ALWAYS" styleClass="chart-card">
+                        <Label text="Audience Overview" styleClass="chart-title"/>
+                        <BarChart fx:id="barChartAudiencia" legendVisible="false" VBox.vgrow="ALWAYS">
+                            <xAxis><CategoryAxis side="BOTTOM"/></xAxis>
+                            <yAxis><NumberAxis side="LEFT"/></yAxis>
+                        </BarChart>
+                    </VBox>
+                </HBox>
+
+            </VBox>
+        </ScrollPane>
+    </center>
+</BorderPane>

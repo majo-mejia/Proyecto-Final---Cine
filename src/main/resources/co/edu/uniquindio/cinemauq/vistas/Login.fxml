@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<StackPane xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
+           fx:controller="co.edu.uniquindio.cinemauq.controllers.LoginController"
+           styleClass="login-background"
+           stylesheets="@../styles/DarkTema.css">
+
+    <!-- TARJETA CENTRAL DE BIENVENIDA -->
+    <VBox alignment="CENTER" spacing="22" maxWidth="430" maxHeight="480" styleClass="login-card">
+
+        <!-- Cabecera / Logo -->
+        <VBox alignment="CENTER" spacing="6">
+            <Label text="🎬" style="-fx-font-size: 40px;"/>
+            <Label text="CinemaUQ" styleClass="login-brand"/>
+            <Label text="BIENVENIDO A LA PLATAFORMA DE GESTIÓN" styleClass="login-subtitle"/>
+        </VBox>
+
+        <Separator styleClass="dark-separator"/>
+
+        <!-- Texto descriptivo -->
+        <Label text="Selecciona tu perfil para explorar la cartelera, reservar asientos o administrar reportes operativos."
+               wrapText="true" textAlignment="CENTER" styleClass="login-description"/>
+
+        <!-- Botones principales de acceso -->
+        <VBox spacing="14" maxWidth="320" style="-fx-padding: 5 0 5 0;">
+            <Button text="🎟️   Ingresar como Cliente"
+                    onAction="#loginCliente"
+                    maxWidth="Infinity"
+                    styleClass="btn-gold"/>
+
+            <Button text="🛡️   Ingresar como Administrador"
+                    onAction="#loginAdmin"
+                    maxWidth="Infinity"
+                    styleClass="btn-dark-admin"/>
+        </VBox>
+
+        <Separator styleClass="dark-separator"/>
+
+        <!-- Pie de tarjeta -->
+        <Label text="Universidad del Quindío • Plataforma de Logística 2026" styleClass="login-footer"/>
+
+    </VBox>
+</StackPane>

@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="co.edu.uniquindio.cinemauq.controllers.AsientosController"
+            styleClass="root-pane"
+            stylesheets="@../styles/DarkTema.css">
+
+    <!-- BARRA SUPERIOR -->
+    <top>
+        <VBox alignment="CENTER" spacing="10" styleClass="top-header">
+            <Label text="CinemaUQ" styleClass="brand-title"/>
+            <HBox alignment="CENTER" spacing="40" styleClass="movie-meta-bar">
+                <Label text="🎬 Beyond Horizons" styleClass="meta-item"/>
+                <Label text="📅 Fri 22 Nov" styleClass="meta-item"/>
+                <Label text="🕒 7:15 PM" styleClass="meta-item"/>
+                <Label text="🚪 Sala 2" styleClass="meta-item"/>
+            </HBox>
+        </VBox>
+    </top>
+
+    <!-- CENTRO: PANTALLA, MATRIZ DE ASIENTOS Y LEYENDA -->
+    <center>
+        <VBox alignment="CENTER" spacing="20" style="-fx-padding: 20;">
+            <VBox alignment="CENTER" spacing="5" styleClass="screen-container">
+                <Label text="S C R E E N" styleClass="screen-text"/>
+                <Separator maxWidth="550" styleClass="screen-line"/>
+            </VBox>
+
+            <GridPane fx:id="gridAsientos" alignment="CENTER" hgap="8" vgap="8"/>
+
+            <!-- LEYENDA INFERIOR -->
+            <HBox alignment="CENTER" spacing="25" style="-fx-padding: 15 0 0 0;">
+                <HBox alignment="CENTER" spacing="8">
+                    <Label styleClass="legend-box, asiento-disponible"/>
+                    <Label text="Available" styleClass="legend-text"/>
+                </HBox>
+                <HBox alignment="CENTER" spacing="8">
+                    <Label styleClass="legend-box, asiento-seleccionado"/>
+                    <Label text="Selected" styleClass="legend-text"/>
+                </HBox>
+                <HBox alignment="CENTER" spacing="8">
+                    <Label styleClass="legend-box, asiento-ocupado"/>
+                    <Label text="Occupied" styleClass="legend-text"/>
+                </HBox>
+                <HBox alignment="CENTER" spacing="8">
+                    <Label text="♿" styleClass="legend-box, asiento-accesible"/>
+                    <Label text="Accessible" styleClass="legend-text"/>
+                </HBox>
+            </HBox>
+        </VBox>
+    </center>
+
+    <!-- PANEL DERECHO: RESUMEN DE COMPRA Y PUNTOS -->
+    <right>
+        <VBox spacing="18" prefWidth="310" styleClass="summary-panel">
+            <!-- Info Película -->
+            <HBox spacing="12" alignment="CENTER_LEFT">
+                <StackPane prefWidth="65" prefHeight="90" styleClass="poster-placeholder">
+                    <Label text="BEYOND&#10;HORIZONS" textAlignment="CENTER" style="-fx-text-fill: #60A5FA; -fx-font-size: 9px; -fx-font-weight: bold;"/>
+                </StackPane>
+                <VBox spacing="4">
+                    <Label text="Beyond Horizons" styleClass="summary-movie-title"/>
+                    <Label text="📅 Fri 22 Nov" styleClass="summary-meta"/>
+                    <Label text="🕒 7:15 PM" styleClass="summary-meta"/>
+                    <Label text="🚪 Sala 2" styleClass="summary-meta"/>
+                </VBox>
+            </HBox>
+
+            <Separator styleClass="dark-separator"/>
+
+            <!-- Asientos Seleccionados -->
+            <VBox spacing="8">
+                <Label text="ASIENTOS SELECCIONADOS" styleClass="section-header"/>
+                <FlowPane fx:id="panelAsientosSeleccionados" hgap="8" vgap="8" prefWrapLength="260"/>
+            </VBox>
+
+            <Separator styleClass="dark-separator"/>
+
+            <!-- Desglose de Precios -->
+            <VBox spacing="8">
+                <Label text="ENTRADAS" styleClass="section-header"/>
+                <HBox>
+                    <Label text="Adultos" styleClass="price-label"/>
+                    <Region HBox.hgrow="ALWAYS"/>
+                    <Label fx:id="lblCantidad" text="0 x \$16.00" styleClass="price-detail"/>
+                    <Region prefWidth="15"/>
+                    <Label fx:id="lblSubtotalEntradas" text="\$0.00" styleClass="price-value"/>
+                </HBox>
+                <HBox>
+                    <Label text="Subtotal" styleClass="price-detail"/>
+                    <Region HBox.hgrow="ALWAYS"/>
+                    <Label fx:id="lblSubtotal" text="\$0.00" styleClass="price-detail"/>
+                </HBox>
+                <HBox>
+                    <Label text="Service fee" styleClass="price-detail"/>
+                    <Region HBox.hgrow="ALWAYS"/>
+                    <Label fx:id="lblServiceFee" text="\$0.00" styleClass="price-detail"/>
+                </HBox>
+
+                <HBox alignment="CENTER_LEFT" style="-fx-padding: 10 0 0 0;">
+                    <Label text="TOTAL" styleClass="total-label"/>
+                    <Region HBox.hgrow="ALWAYS"/>
+                    <Label fx:id="lblTotal" text="\$0.00" styleClass="total-value"/>
+                </HBox>
+            </VBox>
+
+            <!-- Botones -->
+            <Button text="🔒 CONTINUAR AL PAGO" maxWidth="Infinity" styleClass="btn-gold"/>
+            <Button text="&lt; VOLVER" onAction="#volver" maxWidth="Infinity" styleClass="btn-dark-outline"/>
+
+            <Region VBox.vgrow="ALWAYS"/>
+
+            <!-- Puntos de Lealtad -->
+            <VBox spacing="4" styleClass="loyalty-box">
+                <Label text="PUNTOS DE LEALTAD" styleClass="section-header"/>
+                <HBox alignment="CENTER_LEFT">
+                    <Label text="Ganarás&#10;con esta compra" styleClass="price-detail"/>
+                    <Region HBox.hgrow="ALWAYS"/>
+                    <Label fx:id="lblPuntos" text="0 pts ⭐" styleClass="loyalty-points"/>
+                </HBox>
+            </VBox>
+        </VBox>
+    </right>
+</BorderPane>
