@@ -1,0 +1,51 @@
+/* Tema oscuro para los diálogos, tablas y formularios de las ventanas de gestión (complementa DarkTema.css). */
+.dialog-pane { -fx-background-color: #0f141c; }
+.dialog-pane > .header-panel { -fx-background-color: #151b26; -fx-border-color: transparent transparent #263041 transparent; }
+.dialog-pane > .header-panel .label { -fx-text-fill: #f1f5f9; -fx-font-size: 16px; -fx-font-weight: bold; }
+.dialog-pane > .content { -fx-background-color: #0f141c; }
+.dialog-pane .label { -fx-text-fill: #cbd5e1; }
+.dialog-pane > .button-bar > .container { -fx-background-color: #0f141c; }
+
+.dialog-pane .button { -fx-background-color: #1e2635; -fx-text-fill: #e2e8f0; -fx-border-color: #334155; -fx-border-radius: 6; -fx-background-radius: 6; -fx-cursor: hand; }
+.dialog-pane .button:hover { -fx-background-color: #2a3447; }
+.dialog-pane .button:default { -fx-background-color: #fbbf24; -fx-text-fill: #111827; -fx-font-weight: bold; -fx-border-color: #fbbf24; }
+.dialog-pane .button:default:hover { -fx-background-color: #fcd34d; }
+
+.dialog-pane .text-field, .dialog-pane .password-field, .dialog-pane .text-area, .dialog-pane .text-area .content {
+    -fx-background-color: #151b26; -fx-text-fill: #f1f5f9; -fx-prompt-text-fill: #64748b; -fx-highlight-fill: #7c3aed; }
+.dialog-pane .text-field, .dialog-pane .password-field, .dialog-pane .text-area { -fx-border-color: #334155; -fx-border-radius: 6; -fx-background-radius: 6; }
+.dialog-pane .combo-box-base, .dialog-pane .date-picker, .dialog-pane .spinner { -fx-background-color: #151b26; -fx-border-color: #334155; -fx-border-radius: 6; -fx-background-radius: 6; }
+.dialog-pane .combo-box .list-cell, .dialog-pane .date-picker .text-field, .dialog-pane .spinner .text-field { -fx-text-fill: #f1f5f9; -fx-background-color: transparent; }
+.dialog-pane .combo-box-base .arrow, .dialog-pane .spinner .increment-arrow, .dialog-pane .spinner .decrement-arrow, .dialog-pane .date-picker .arrow { -fx-background-color: #cbd5e1; }
+.dialog-pane .spinner .increment-arrow-button, .dialog-pane .spinner .decrement-arrow-button, .dialog-pane .date-picker .arrow-button { -fx-background-color: #1e2635; }
+
+.dialog-pane .list-view { -fx-background-color: #151b26; -fx-control-inner-background: #151b26; -fx-border-color: #334155; }
+.dialog-pane .list-cell { -fx-text-fill: #e2e8f0; -fx-background-color: transparent; }
+.dialog-pane .list-cell:selected { -fx-background-color: #3b2f6b; -fx-text-fill: white; }
+
+.dialog-pane .table-view { -fx-background-color: #0f141c; -fx-control-inner-background: #121823; -fx-control-inner-background-alt: #161d2a;
+    -fx-table-cell-border-color: #1f2937; -fx-border-color: #263041; }
+.dialog-pane .table-view .column-header-background, .dialog-pane .table-view .filler { -fx-background-color: #1a2230; }
+.dialog-pane .table-view .column-header { -fx-background-color: #1a2230; -fx-border-color: transparent #263041 #263041 transparent; }
+.dialog-pane .table-view .column-header .label { -fx-text-fill: #fbbf24; -fx-font-weight: bold; }
+.dialog-pane .table-view .placeholder .label { -fx-text-fill: #94a3b8; }
+.dialog-pane .table-row-cell { -fx-text-background-color: #e2e8f0; }
+.dialog-pane .table-row-cell .table-cell { -fx-text-fill: #e2e8f0; }
+.dialog-pane .table-row-cell:selected { -fx-background-color: #3b2f6b; }
+.dialog-pane .table-row-cell:selected .table-cell { -fx-text-fill: #ffffff; }
+.dialog-pane .table-view .scroll-bar { -fx-background-color: #0f141c; }
+.dialog-pane .table-view .scroll-bar .thumb { -fx-background-color: #334155; -fx-background-radius: 4; }
+.dialog-pane .table-view .scroll-bar .increment-button, .dialog-pane .table-view .scroll-bar .decrement-button { -fx-background-color: #0f141c; }
+
+.dialog-pane .tab-pane > .tab-header-area > .tab-header-background { -fx-background-color: #0f141c; }
+.dialog-pane .tab { -fx-background-color: #1a2230; }
+.dialog-pane .tab:selected { -fx-background-color: #3b2f6b; }
+.dialog-pane .tab .tab-label { -fx-text-fill: #cbd5e1; }
+.dialog-pane .tab:selected .tab-label { -fx-text-fill: #ffffff; }
+.dialog-pane .tab-pane > .tab-content-area { -fx-background-color: #0f141c; }
+
+.dialog-pane .check-box .label, .dialog-pane .radio-button .radio { -fx-text-fill: #cbd5e1; }
+.combo-box-popup > .list-view, .date-picker-popup { -fx-background-color: #151b26; -fx-control-inner-background: #151b26; -fx-border-color: #334155; }
+.combo-box-popup > .list-view > .virtual-flow > .clipped-container > .sheet > .list-cell { -fx-text-fill: #e2e8f0; -fx-background-color: #151b26; }
+.combo-box-popup > .list-view > .virtual-flow > .clipped-container > .sheet > .list-cell:hover,
+.combo-box-popup > .list-view > .virtual-flow > .clipped-container > .sheet > .list-cell:selected { -fx-background-color: #3b2f6b; -fx-text-fill: white; }
