@@ -10,11 +10,7 @@ import javafx.stage.Stage;
 
 import java.net.URL;
 
-/**
- * Cambia de vista: carga el FXML y devuelve su controlador para que la vista anterior le pase los
- * datos que necesite (por ejemplo, la función elegida). Cada FXML trae su hoja de estilos
- * (DarkTema.css); si alguno no la tiene, se le agrega para que todas se vean igual.
- */
+
 public final class Navigator {
 
     private static final String BASE = "/co/edu/uniquindio/cinemauq/view/";
@@ -29,7 +25,7 @@ public final class Navigator {
 
     private Navigator() { }
 
-    /** Navega desde el botón que disparó el evento y devuelve el controlador de la nueva vista. */
+
     public static <T> T navigate(ActionEvent event, String fxmlPath) {
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         return mostrar(stage, fxmlPath);

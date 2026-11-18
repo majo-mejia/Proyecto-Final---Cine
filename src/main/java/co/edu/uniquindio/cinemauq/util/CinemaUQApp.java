@@ -7,15 +7,12 @@ import javafx.stage.Stage;
 
 import java.time.Clock;
 
-/**
- * Punto de entrada. Crea el cine con los datos iniciales y una única fachada que comparten todos
- * los controladores (los del cliente la usan directamente; los del administrador piden el proxy).
- */
+
 public class CinemaUQApp extends Application {
 
     private static CineFacade fachada;
 
-    /** Fachada de la aplicación; los controladores no acceden a Cine directamente. */
+
     public static CineFacade obtenerFachada() {
         return fachada;
     }

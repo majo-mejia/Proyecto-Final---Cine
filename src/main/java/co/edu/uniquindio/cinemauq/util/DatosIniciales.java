@@ -20,13 +20,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-/**
- * Datos para demostrar la aplicación: salas, películas, confitería, promociones, clientes con
- * saldo, una semana de compras pasadas (para reportes y gráficos) y funciones de los próximos días.
- *
- * Todo se crea con la misma API que usa la aplicación (CineFacade y el proxy de administración).
- * Para registrar compras en días pasados se usa una fachada con el reloj fijado en ese día.
- */
 public final class DatosIniciales {
 
     public static final String CORREO_ADMIN = "admin@cinemauq.co";
@@ -43,7 +36,7 @@ public final class DatosIniciales {
 
     private DatosIniciales() { }
 
-    /** Crea el cine con todos los datos, tomando "ahora" del reloj recibido. */
+
     public static Cine crearCine(Clock reloj) throws CinemaUQException {
         Cine cine = new Cine("CinemaUQ", "900.123.456-7", "Cra. 15 # 12N-20, Armenia", "6067359300",
                 "contacto@cinemauq.co");
@@ -58,7 +51,7 @@ public final class DatosIniciales {
         return cine;
     }
 
-    /** Lo que se crea al inicio y se reutiliza en las compras. */
+
     private record Catalogo(Pelicula beyond, Pelicula future, Pelicula peliculaAntigua,
                             Producto crispetas, Producto gaseosa, Producto nachos,
                             Combo comboPareja, Combo comboIndividual, Promocion estudiante) { }
@@ -108,8 +101,7 @@ public final class DatosIniciales {
             fachada.registrarCliente(c[0], c[1], c[2], c[3]);
         }
         fachada.iniciarSesion(CORREO_ADMIN, CONTRASENA_ADMIN);
-        // La semana simulada gasta unos $350.000 por cliente; Juan solo compra dos veces y queda con poco
-        // saldo para mostrar la solicitud de recarga.
+
         admin.recargarTarjeta(CLIENTES[0][1], 600_000);
         admin.recargarTarjeta(CLIENTES[1][1], 500_000);
         admin.recargarTarjeta(CLIENTES[2][1], 500_000);
@@ -119,7 +111,7 @@ public final class DatosIniciales {
         return new Catalogo(beyond, future, antigua, crispetas, gaseosa, nachos, pareja, individual, estudiante);
     }
 
-    /** Seis días de funciones y compras pasadas, con una cancelación y una compra con puntos. */
+
     private static void crearHistoria(Cine cine, Clock reloj, LocalDate hoy, Catalogo c) throws CinemaUQException {
         for (int d = 6; d >= 1; d--) {
             LocalDate dia = hoy.minusDays(d);
@@ -169,7 +161,7 @@ public final class DatosIniciales {
         }
     }
 
-    /** Funciones de los próximos tres días; la primera de Beyond Horizons ya tiene asientos vendidos. */
+
     private static void crearCartelera(Cine cine, Clock reloj, LocalDate hoy, Catalogo c) throws CinemaUQException {
         CineFacade fachada = new CineFacade(cine, reloj);
         ServicioAdministracion admin = comoAdministrador(fachada);
@@ -194,7 +186,7 @@ public final class DatosIniciales {
         fachada.cerrarSesion();
     }
 
-    // ---------------- Ayudas ----------------
+
 
     private static CineFacade fachadaEn(Cine cine, Clock reloj, LocalDateTime momento) {
         return new CineFacade(cine, Clock.fixed(momento.atZone(reloj.getZone()).toInstant(), reloj.getZone()));
@@ -229,7 +221,7 @@ public final class DatosIniciales {
         return sala;
     }
 
-    /** Entrega asientos libres en orden (A1, A2, ...) para no repetir en la misma función. */
+
     private static final class Asignador {
         private final Map<Funcion, Integer> usados = new java.util.HashMap<>();
 
