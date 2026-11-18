@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="co.edu.uniquindio.cinemauq.controllers.CarteleraController"
+            styleClass="root-pane"
+            stylesheets="@../styles/DarkTema.css">
+
+    <!-- ENCABEZADO ESTILO CINE COLOMBIA -->
+    <top>
+        <VBox>
+            <!-- Barra superior utilitaria (Ubicación y Recarga Tarjeta) -->
+            <HBox alignment="CENTER_LEFT" spacing="20" styleClass="utility-bar">
+                <Label text="📍 Estás en: Armenia - Quindío ▾" styleClass="utility-text"/>
+                <Label text="🏢 Multiplex: CinemaUQ Centro ▾" styleClass="utility-text"/>
+                <Region HBox.hgrow="ALWAYS"/>
+                <Button text="💳 Recarga Tarjeta CinemaUQ" onAction="#recargarTarjeta" styleClass="utility-btn"/>
+            </HBox>
+
+            <!-- Barra de navegación principal -->
+            <HBox alignment="CENTER_LEFT" spacing="25" styleClass="top-header">
+                <Label text="CinemaUQ" styleClass="brand-title"/>
+                <Button text="Películas ▾" styleClass="menu-link-active"/>
+                <Button text="UQ Alternativo ▾" styleClass="menu-link"/>
+                <Button text="Comidas ▾" styleClass="menu-link"/>
+                <Button text="Multiplex ▾" styleClass="menu-link"/>
+                <Region HBox.hgrow="ALWAYS"/>
+                <Button text="🚪 Cerrar Sesión" onAction="#cerrarSesion" styleClass="btn-dark-outline"/>
+            </HBox>
+        </VBox>
+    </top>
+
+    <!-- CONTENIDO PRINCIPAL: TÍTULO, PESTAÑAS, FILTROS Y CUADRÍCULA -->
+    <center>
+        <ScrollPane fitToWidth="true" styleClass="dark-scroll">
+            <VBox spacing="18" style="-fx-padding: 25 40 30 40;">
+
+                <!-- Migas de pan y título -->
+                <VBox spacing="4">
+                    <Label text="Multiplex / CinemaUQ / Cartelera" styleClass="breadcrumb-text"/>
+                    <Label text="CinemaUQ: cartelera y horarios" styleClass="dashboard-title"/>
+                </VBox>
+
+                <!-- Pestañas principales + Buscador -->
+                <HBox alignment="CENTER_LEFT" spacing="25" style="-fx-border-color: #1E2532; -fx-border-width: 0 0 1 0; -fx-padding: 0 0 10 0;">
+                    <Button text="En Cartelera" styleClass="tab-main-active"/>
+                    <Button text="CinemaUQ Alternativo" styleClass="tab-main"/>
+                    <Region HBox.hgrow="ALWAYS"/>
+                    <TextField fx:id="txtBuscar" promptText="🔍 Buscar película..." prefWidth="250" styleClass="search-input"/>
+                </HBox>
+
+                <!-- Barra de filtros desplegables + Estados (Disponible, Preventa, Pronto) -->
+                <HBox alignment="CENTER_LEFT" spacing="12">
+                    <ComboBox fx:id="cmbFormato" promptText="Formatos" styleClass="dark-combo"/>
+                    <ComboBox fx:id="cmbIdioma" promptText="Idioma" styleClass="dark-combo"/>
+                    <ComboBox fx:id="cmbSala" promptText="Salas" styleClass="dark-combo"/>
+                    <ComboBox fx:id="cmbGenero" promptText="Género" styleClass="dark-combo"/>
+
+                    <Region HBox.hgrow="ALWAYS"/>
+
+                    <HBox spacing="18" alignment="CENTER">
+                        <Button text="Disponible" styleClass="subtab-active"/>
+                        <Button text="Preventa" styleClass="subtab"/>
+                        <Button text="Pronto" styleClass="subtab"/>
+                    </HBox>
+                </HBox>
+
+                <!-- CUADRÍCULA DE PELÍCULAS (4 columnas por fila) -->
+                <FlowPane fx:id="gridPeliculas" hgap="20" vgap="24" prefWrapLength="980" style="-fx-padding: 10 0 0 0;"/>
+
+            </VBox>
+        </ScrollPane>
+    </center>
+</BorderPane>
